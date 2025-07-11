@@ -34,20 +34,25 @@ html = """
 def get_response_from_openrouter(prompt):
     headers = {
         "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
-        "HTTP-Referer": "https://liqdagency.online",  # use your real domain or placeholder
+        "HTTP-Referer": "https://liqdagency.online",  # Your domain here
         "Content-Type": "application/json"
     }
 
     data = {
-        "model": "openai/gpt-3.5-turbo",  # or "anthropic/claude-3-sonnet" if you prefer Claude
+        "model": "openai/gpt-3.5-turbo",  # or Claude if using that model
         "messages": [
             {"role": "system", "content": "You are a short-form scriptwriting expert."},
             {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
         ]
     }
 
-    response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
-    return response.json()["choices"][0]["message"]["content"]
+    try:
+        response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
+        response.raise_for_status()  # This will throw an error if something is wrong
+        return response.json()["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"❌ ERROR from OpenRouter: {e}")
+        return "Something went wrong. Please try again later."
 
 @app.route("/", methods=["GET", "POST"])
 def index():
