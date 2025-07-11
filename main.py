@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template_string
 import openai
 import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 openai.api_key = os.environ['OPENROUTER_API_KEY']
 
 html = """
@@ -46,4 +46,5 @@ def index():
         result = response['choices'][0]['message']['content']
     return render_template_string(html, result=result)
 
-app.run(host="0.0.0.0", port=10000)
+if _name_ == '_main_':
+    app.run(host="0.0.0.0", port=10000)
