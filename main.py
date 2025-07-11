@@ -46,5 +46,5 @@ def index():
         result = response['choices'][0]['message']['content']
     return render_template_string(html, result=result)
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     app.run(host="0.0.0.0", port=10000)
