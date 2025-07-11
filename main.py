@@ -39,7 +39,7 @@ def get_response_from_openrouter(prompt):
     }
 
     data = {
-        "model": "openai/gpt-3.5-turbo",  # Or "anthropic/claude-3-sonnet" if using Claude
+        "model": "anthropic/claude-3-sonnet",  # Or "anthropic/claude-3-sonnet" if using Claude
         "messages": [
             {"role": "system", "content": "You are a short-form scriptwriting expert."},
             {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
@@ -49,7 +49,7 @@ def get_response_from_openrouter(prompt):
     response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
 
     # 🔍 Print full response in Render log
-    print("🧠 API Response:", response.text)
+   print("🔍 Full OpenRouter Response:", response.status_code, response.text)
 
     try:
         result = response.json()
