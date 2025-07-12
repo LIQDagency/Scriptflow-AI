@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScriptFlow AI 🎬</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ScriptFlow AI 🎬</h1>
+        <form method="POST">
+            <label for="prompt">💡 Enter your content idea:</label>
+            <input type="text" id="prompt" name="prompt" placeholder="E.g., How to stay focused while studying">
+            <button type="submit">🚀 Generate Script</button>
+        </form>
+        {% if result %}
+        <div class="result">
+            <h2>✨ Your Script:</h2>
+            <p>{{ result }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
