@@ -31,34 +31,30 @@ html = """
 """
 
 # Function to connect to OpenRouter API
-    def get_response_from_openrouter(prompt):
-        headers = {
-            "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
-            "HTTP-Referer": "https://liqdagency.online",  # or "https://example.com" if your domain isn’t ready
-            "Content-Type": "application/json"
-        }
-    
-        data = {
-            "model": "anthropic/claude-3-sonnet",  # Or "anthropic/claude-3-sonnet" if using Claude
-            "messages": [
-                {"role": "system", "content": "You are a short-form scriptwriting expert."},
-                {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
-            ]
-        }
-    
+def get_response_from_openrouter(prompt):
+    headers = {
+        "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
+        "HTTP-Referer": "https://liqdagency.online",  # or use a placeholder
+        "Content-Type": "application/json"
+    }
+
+    data = {
+        "model": "anthropic/claude-3-sonnet",
+        "messages": [
+            {"role": "system", "content": "You are a short-form scriptwriting expert."},
+            {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
+        ]
+    }
+
+    try:
         response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
-    
-        # 🔍 Print full response in Render log
-       print("🔍 Full OpenRouter Response:", response.status_code, response.text)
-    
-        try:
-            result = response.json()
-            if "choices" in result:
-                return result["choices"][0]["message"]["content"]
+        print("🔍 Full OpenRouter Response:", response.status_code, response.text)
+
+        result = response.json()
+        if "choices" in result:
+            return result["choices"][0]["message"]["content"]
         else:
             return "❌ Something went wrong: 'choices' key not found."
-    except Exception as e:
-        return f"❌ Error parsing response: {str(e)}"
     except Exception as e:
         print(f"❌ ERROR from OpenRouter: {e}")
         return "Something went wrong. Please try again later."
