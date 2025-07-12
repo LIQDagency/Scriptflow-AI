@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ScriptFlow AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">ScriptFlow AI 🎬</h1>
+    <form method="POST">
+      <label for="prompt">Enter Your Video Idea:</label>
+      <input type="text" id="prompt" name="prompt" placeholder="e.g. How to wake up at 5AM">
+      <button type="submit">✨ Generate</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+      <h2>Generated Content:</h2>
+      <pre>{{ result }}</pre>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
