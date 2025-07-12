@@ -34,12 +34,12 @@ html = """
 def get_response_from_openrouter(prompt):
     headers = {
         "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
-        "HTTP-Referer": "https://liqdagency.online",  # or use a placeholder
+        "HTTP-Referer": "https://liqdagency.online",  # or your site or a placeholder
         "Content-Type": "application/json"
     }
 
     data = {
-        "model": "anthropic/claude-3-sonnet",
+        "model": "openai/gpt-3.5-turbo",  # Use this for compatibility
         "messages": [
             {"role": "system", "content": "You are a short-form scriptwriting expert."},
             {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
@@ -48,18 +48,17 @@ def get_response_from_openrouter(prompt):
 
     try:
         response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
-        print("🔍 Full OpenRouter Response:", response.status_code, response.text)
+        print("🔍 Full API Response (raw):", response.status_code, response.text)
 
         result = response.json()
-print("🔍 API JSON:", result)  # 👈 This line shows us what's returned
 
-if "choices" in result:
-    return result["choices"][0]["message"]["content"]
-else:
-    return f"❌ Response missing 'choices'. Got this instead: {result}"
+        if "choices" in result:
+            return result["choices"][0]["message"]["content"]
+        else:
+            return f"❌ 'choices' key not found. Full response: {result}"
+
     except Exception as e:
-        print(f"❌ ERROR from OpenRouter: {e}")
-        return "Something went wrong. Please try again later."
+        return f"❌ Error talking to OpenRouter: {str(e)}"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
