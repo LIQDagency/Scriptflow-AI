@@ -42,6 +42,7 @@ def get_response_from_openrouter(prompt):
 
     data = {
     "model": "anthropic/claude-3-sonnet",
+    "max_tokens": 1000,
     "messages": [
         {"role": "system", "content": "You are a short-form content strategist."},
         {"role": "user", "content": f"""
