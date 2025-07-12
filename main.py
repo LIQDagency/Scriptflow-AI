@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import requests
 import os
 
-app = Flask(_name_, static_folder="static", template_folder="templates")
+app = Flask(__name__, static_folder="static", template_folder="templates")
 
 def get_response_from_openrouter(prompt):
     headers = {
@@ -35,5 +35,5 @@ def index():
         result = get_response_from_openrouter(prompt)
     return render_template("index.html", result=result)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
