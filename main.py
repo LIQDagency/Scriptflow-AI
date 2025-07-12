@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, render_template_string
 import requests
 import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Simple HTML page for user input
 html = """
@@ -168,5 +168,5 @@ def index():
     return render_template_string(html, result=result)
 
 # Run the app on Render
-if _name_ == "_main_":
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
