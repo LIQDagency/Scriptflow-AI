@@ -39,12 +39,13 @@ def get_response_from_openrouter(prompt):
     }
 
     data = {
-        "model": "anthropic/claude-3-sonnet",  # Use this for compatibility
-        "messages": [
-            {"role": "system", "content": "You are a short-form scriptwriting expert."},
-            {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
-        ]
-    }
+    "model": "anthropic/claude-3-sonnet",
+    "max_tokens": 800,
+    "messages": [
+        {"role": "system", "content": "You are a short-form scriptwriting expert."},
+        {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
+    ]
+}
 
     try:
         response = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=data)
