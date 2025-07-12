@@ -51,10 +51,12 @@ def get_response_from_openrouter(prompt):
         print("🔍 Full OpenRouter Response:", response.status_code, response.text)
 
         result = response.json()
-        if "choices" in result:
-            return result["choices"][0]["message"]["content"]
-        else:
-            return "❌ Something went wrong: 'choices' key not found."
+print("🔍 API JSON:", result)  # 👈 This line shows us what's returned
+
+if "choices" in result:
+    return result["choices"][0]["message"]["content"]
+else:
+    return f"❌ Response missing 'choices'. Got this instead: {result}"
     except Exception as e:
         print(f"❌ ERROR from OpenRouter: {e}")
         return "Something went wrong. Please try again later."
