@@ -23,9 +23,11 @@ html = """
         <button type="submit">Generate Script</button>
     </form>
     {% if result %}
-        <h2>Generated Script:</h2>
-        <p>{{ result }}</p>
-    {% endif %}
+    <h2>✨ Content Pack Generated:</h2>
+    <div style="white-space: pre-wrap; background: #222; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+        {{ result }}
+    </div>
+{% endif %}
 </body>
 </html>
 """
@@ -40,10 +42,30 @@ def get_response_from_openrouter(prompt):
 
     data = {
     "model": "anthropic/claude-3-sonnet",
-    "max_tokens": 800,
     "messages": [
-        {"role": "system", "content": "You are a short-form scriptwriting expert."},
-        {"role": "user", "content": f"Write a short-form video script based on this idea: {prompt}"}
+        {"role": "system", "content": "You are a short-form content strategist."},
+        {"role": "user", "content": f"""
+Given this idea: "{prompt}"
+
+Write:
+1. Three scroll-stopping hooks (for short-form videos)
+2. A powerful script (30-60 seconds)
+3. Three viral captions optimized for IG Reels, TikTok, and YT Shorts
+
+Format:
+Hooks:
+- ...
+- ...
+- ...
+
+Script:
+[Script content here]
+
+Captions:
+- ...
+- ...
+- ...
+"""}
     ]
 }
 
