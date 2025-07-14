@@ -16,7 +16,10 @@
         {% if result %}
         <div class="result">
             <h2>✨ Your Script:</h2>
-            <p>{{ result }}</p>
+            <div class="result-box">
+  <h2 class="section-title">📝 Generated Output:</h2>
+  <pre class="result-text">{{ result }}</pre>
+</div>
         </div>
         {% endif %}
     </div>
