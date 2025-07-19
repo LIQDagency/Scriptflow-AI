@@ -18,7 +18,8 @@
 
         {% if result %}
         <div class="result-box">
-            <pre>{{ result }}</pre>
+            <div class="formatted-result">{{ result | replace('\n', '<br>') | safe }}</div>
+
         </div>
         {% endif %}
     </div>
