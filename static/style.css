@@ -1,85 +1,80 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-  color: #fff;
   font-family: 'Poppins', sans-serif;
+  background-color: #0f0f0f;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .container {
   text-align: center;
-  width: 100%;
-  max-width: 700px;
-  padding: 2em;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  box-shadow: 0 0 25px #0ff;
-  backdrop-filter: blur(10px);
-  margin: 2em;
+  max-width: 800px;
+  padding: 20px;
 }
 
-.glow {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.2rem;
-  text-shadow: 0 0 10px #0ff;
-  margin-bottom: 0.2em;
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
 
-.tagline {
-  font-size: 1.1rem;
-  margin-bottom: 1.5em;
+.neon {
+  color: #00ffff;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
+.subtitle {
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
   color: #aaa;
-  text-shadow: 0 0 5px #0ff;
 }
 
-textarea {
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+input[type="text"] {
   width: 100%;
-  height: 120px;
-  padding: 1em;
-  font-size: 1rem;
-  border-radius: 10px;
-  background: #0d0d0d;
-  color: #0ff;
+  max-width: 500px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
   border: none;
-  box-shadow: inset 0 0 10px #00f;
-  font-family: 'Poppins', sans-serif;
-  resize: none;
-  margin-bottom: 1em;
+  outline: none;
 }
 
 button {
-  padding: 0.75em 1.5em;
-  font-size: 1rem;
-  background: #0ff;
+  background: #00ffff;
   color: #000;
   border: none;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
   cursor: pointer;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #00f;
-  transition: transform 0.2s;
-  margin-top: 1em;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
+  background: #0ff;
   transform: scale(1.05);
 }
 
-.result {
-  margin-top: 2em;
+.result-box {
+  margin-top: 2rem;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #0ff;
   text-align: left;
-  background: #111;
-  padding: 1em;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #00f;
   white-space: pre-wrap;
+  max-width: 100%;
   word-wrap: break-word;
-  max-height: 400px;
-  overflow-y: auto;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  color: #0ff;
 }
