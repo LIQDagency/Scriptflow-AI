@@ -91,14 +91,13 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 15px #00f2ff;
     text-align: left;
-    white-space: pre-wrap;      /* ✅ allow wrapping */
-    word-wrap: break-word;      /* ✅ break long words */
-    overflow-wrap: break-word;  /* ✅ ensure breaks happen */
+    white-space: pre-wrap;         /* keeps newlines, allows wrapping */
+    word-break: break-word;        /* breaks long unbroken words */
+    overflow-x: hidden;            /* removes horizontal scroll */
     max-width: 700px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    overflow-x: auto;           /* ✅ add horizontal scroll if really needed */
 }
 
 
