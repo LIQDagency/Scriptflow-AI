@@ -85,22 +85,24 @@ body {
 }
 
 .result-box {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 12px;
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 900px;                /* ✅ Keeps the content boxed */
   background: #1e1e1e;
   color: #fff;
   font-family: "Segoe UI", sans-serif;
   font-size: 16px;
-  line-height: 1.6;
-  max-height: 400px;           /* Limit height */
-  overflow-y: auto;            /* Scroll vertically if needed */
-  white-space: pre-wrap;       /* Wrap long lines */
-  word-break: break-word;      /* Break long words */
-  box-shadow: 0 0 15px rgba(0,255,255,0.2);
+  line-height: 1.8;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  overflow-x: hidden;              /* ✅ Prevent horizontal scroll */
+  overflow-y: auto;                /* ✅ Allow vertical scroll if needed */
+  white-space: normal;             /* ✅ Allow line wrapping */
+  word-break: break-word;          /* ✅ Prevent long lines breaking layout */
   border-left: 4px solid cyan;
   animation: glowBorder 2s linear infinite;
 }
+
 
 
 
