@@ -1,4 +1,10 @@
 document.getElementById("result").innerHTML = formatScript(data.script);
+function formatScript(script) {
+    // Convert double new lines into paragraph breaks
+    const paragraphs = script.split('\n\n').map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`);
+    return paragraphs.join('');
+}
+
     const topic = document.getElementById('topic').value;
 
     const response = await fetch('/generate', {
