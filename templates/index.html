@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>ScriptFlow AI</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>ScriptFlow AI</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <div class="container">
-    <h1 class="glow-text">ScriptFlow AI</h1>
-    <p class="subtext">Your AI-powered Short-form Script Engine</p>
-    
-    <form method="POST">
-      <div class="form-box">
-        <input type="text" name="prompt" placeholder="Enter topic..." required>
-        <button type="submit">Generate Script</button>
-        <div class="glow-line"></div>
-      </div>
-    </form>
+    <div class="container">
+        <h1 class="glow-text">ScriptFlow AI</h1>
+        <p class="subtitle">Your <span class="hover-flash">AI-powered</span> Short-form Script Engine</p>
+        
+        <form method="POST">
+            <div class="input-container">
+                <input type="text" name="prompt" placeholder="Enter topic..." class="glow-input" required>
+                <button type="submit" class="glow-button">Generate Script</button>
+            </div>
+        </form>
 
-    {% if result %}
-      <div class="result-box">
-        <pre>{{ result }}</pre>
-      </div>
-    {% endif %}
-  </div>
+        {% if result %}
+        <div class="result-box">
+            <pre>{{ result }}</pre>
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>
