@@ -102,11 +102,5 @@ body {
   animation: glowBorder 2s linear infinite;
 }
 
-@keyframes glowBorder {
-  0% { border-color: #0ff; }
-  50% { border-color: #08f; }
-  100% { border-color: #0ff; }
-}
-
 
 
