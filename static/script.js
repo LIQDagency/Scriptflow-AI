@@ -1,4 +1,4 @@
-document.getElementById('generateBtn').addEventListener('click', async () => {
+document.getElementById("result").innerHTML = formatScript(data.script);
     const topic = document.getElementById('topic').value;
 
     const response = await fetch('/generate', {
