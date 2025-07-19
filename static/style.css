@@ -1,110 +1,99 @@
 body {
-  background: #000;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+    background: #0f0f0f;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-  text-align: center;
-  max-width: 800px;
-  width: 90%;
-  padding: 30px;
+    text-align: center;
+    padding: 20px;
 }
 
 .glow-text {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3rem;
-  color: #fff;
-  text-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff, 0 0 30px #00f2ff;
-  transition: 0.3s;
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+    animation: flicker 2s infinite alternate;
 }
 
-.glow-text:hover {
-  text-shadow: 0 0 20px #ff00e1, 0 0 40px #ff00e1, 0 0 60px #ff00e1;
-  cursor: pointer;
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
 }
 
-.subtext {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #ccc;
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ccc;
 }
 
-.form-box {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+.hover-flash {
+    transition: color 0.4s, text-shadow 0.4s;
+    cursor: pointer;
 }
 
-input[type="text"] {
-  padding: 12px 15px;
-  font-size: 1rem;
-  border: 2px solid #00f2ff;
-  border-radius: 8px;
-  outline: none;
-  background-color: transparent;
-  color: #fff;
-  width: 60%;
-  transition: 0.3s;
+.hover-flash:hover {
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
 }
 
-input[type="text"]:hover,
-input[type="text"]:focus {
-  box-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff;
+.input-container {
+    position: relative;
+    display: inline-block;
 }
 
-button {
-  padding: 12px 20px;
-  background-color: #00f2ff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+.glow-input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    width: 250px;
+    background: #1f1f1f;
+    color: white;
+    box-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff inset;
+    animation: borderGlow 3s infinite alternate;
 }
 
-button:hover {
-  background-color: #ff00e1;
-  color: white;
-  box-shadow: 0 0 15px #ff00e1, 0 0 30px #ff00e1;
+@keyframes borderGlow {
+    0% { box-shadow: 0 0 10px #00f2ff, 0 0 20px #00f2ff inset; }
+    100% { box-shadow: 0 0 15px #f0f, 0 0 30px #f0f inset; }
 }
 
-.glow-line {
-  position: absolute;
-  top: -5px;
-  left: 0;
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(270deg, #00f2ff, #ff00e1);
-  background-size: 400% 400%;
-  animation: neonMove 3s linear infinite;
-  border-radius: 10px;
-  pointer-events: none;
+.glow-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #00f2ff, #f0f);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00f2ff;
+    transition: transform 0.2s ease;
 }
 
-@keyframes neonMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+.glow-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #fff;
 }
 
 .result-box {
-  margin-top: 40px;
-  padding: 20px;
-  border: 1px solid #444;
-  background-color: #111;
-  border-radius: 10px;
-  text-align: left;
-  color: #0ff;
-  box-shadow: 0 0 10px #00f2ff;
-  white-space: pre-wrap;
+    margin-top: 30px;
+    background: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00f2ff;
+    text-align: left;
+    white-space: pre-wrap;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
+
