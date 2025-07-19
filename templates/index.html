@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ScriptFlow AI 🎬</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScriptFlow AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>ScriptFlow AI 🎬</h1>
-        <form method="POST">
-            <label for="prompt">💡 Enter your content idea:</label>
-            <input type="text" id="prompt" name="prompt" placeholder="E.g., How to stay focused while studying">
-            <button type="submit">🚀 Generate Script</button>
-        </form>
-        {% if result %}
-        <div class="result">
-            <h2>✨ Your Script:</h2>
-            <div class="result-box">
-  <h2 class="section-title">📝 Generated Output:</h2>
-  <pre class="result-text">{{ result }}</pre>
-</div>
-        </div>
-        {% endif %}
+<body class="bg-[#0A0A0A] text-white font-sans min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-[#111111] w-full max-w-3xl rounded-2xl p-6 shadow-xl border border-gray-800">
+    <!-- Header -->
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-blue-400">ScriptFlow AI</h1>
+      <p class="text-gray-400 mt-1">Turn raw ideas into viral video scripts in seconds.</p>
     </div>
+
+    <!-- Input Fields -->
+    <form id="scriptForm" class="space-y-4">
+      <div>
+        <label class="block text-sm mb-1">Your Idea</label>
+        <input type="text" id="idea" placeholder="Type your video idea..." class="w-full bg-[#1a1a1a] text-white p-3 rounded-xl border border-gray-700 focus:outline-none" />
+      </div>
+      
+      <div>
+        <label class="block text-sm mb-1">Platform</label>
+        <select id="platform" class="w-full bg-[#1a1a1a] text-white p-3 rounded-xl border border-gray-700 focus:outline-none">
+          <option>TikTok</option>
+          <option>Instagram</option>
+          <option>YouTube Shorts</option>
+        </select>
+      </div>
+
+      <!-- Generate Button -->
+      <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-xl font-bold transition">Generate Script</button>
+    </form>
+
+    <!-- Output Section -->
+    <div id="output" class="mt-6 p-4 bg-[#1a1a1a] rounded-xl border border-gray-700 text-gray-200 hidden">
+      <h2 class="text-lg font-semibold mb-2">Generated Script:</h2>
+      <p id="scriptText" class="whitespace-pre-wrap"></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('scriptForm');
+    const outputBox = document.getElementById('output');
+    const scriptText = document.getElementById('scriptText');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const idea = document.getElementById('idea').value;
+      const platform = document.getElementById('platform').value;
+
+      // Example call to backend (replace with your real endpoint)
+      const res = await fetch('http://localhost:5000/generate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ idea, platform })
+      });
+
+      const data = await res.json();
+      scriptText.innerText = data.script || 'Error generating script.';
+      outputBox.classList.remove('hidden');
+    });
+  </script>
+
 </body>
 </html>
