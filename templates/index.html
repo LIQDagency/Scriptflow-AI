@@ -1,20 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ScriptFlow AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
 <body>
   <div class="container">
-    <h1>ScriptFlow <span class="neon">AI</span></h1>
-    <p class="subtitle">Your AI-powered Short-form Script Engine</p>
-
+    <h1 class="glow-text">ScriptFlow AI</h1>
+    <p class="subtext">Your AI-powered Short-form Script Engine</p>
+    
     <form method="POST">
-      <input type="text" name="prompt" placeholder="Enter topic..." required>
-      <button type="submit">Generate Script</button>
+      <div class="form-box">
+        <input type="text" name="prompt" placeholder="Enter topic..." required>
+        <button type="submit">Generate Script</button>
+        <div class="glow-line"></div>
+      </div>
     </form>
 
     {% if result %}
       <div class="result-box">
         <pre>{{ result }}</pre>
-        <button onclick="copyToClipboard()">📋 Copy</button>
       </div>
     {% endif %}
   </div>
-
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+</html>
